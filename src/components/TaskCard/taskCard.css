@@ -1,0 +1,43 @@
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid purple;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .task-title {
+    font-weight: bold;
+    flex: 1;
+  }
+  
+  .task-detail {
+    flex: 2;
+    margin-left: 10px;
+  }
+  
+  .task-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .task-edit-button {
+    background: linear-gradient(to right, green, lightgreen);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .task-delete-button {
+    background: linear-gradient(to right, red, lightcoral);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
