@@ -2,7 +2,6 @@ import { db } from "../firebaseConfig";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { auth } from "../firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import TasksDatabaseManagement from "./firebaseTaskDatabaseManagement";
 
 async function validateUserLogin(email, password) {
   try {
@@ -12,9 +11,8 @@ async function validateUserLogin(email, password) {
       where("email", "==", email)
     );
     const resultado = await getDocs(databaseSearch);
-    localStorage.setItem("userId", resultado.docs[0].ref.id);
-    const proof = new TasksDatabaseManagement()
-    proof.crearTarea({titulo: "prueba", descripcion: "prueba", estado: "pendiente"})
+    localStorage.setItem("userId", resultado.docs[0].data().username);
+
     const username = resultado.docs[0].data().username;
     return {
       existe: true,

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import registerUser from "../../services/Firebase/User/firebaseUserCreation"
+import registerUser from "../../services/Firebase/User/firebaseUserCreation";
 import "./register.css";
 
 export default function Register() {
@@ -117,4 +117,3 @@ export default function Register() {
     </div>
   );
 }
-

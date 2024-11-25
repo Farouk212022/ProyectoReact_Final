@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { FaCircleUser } from "react-icons/fa6";
 import "./login.css";
 import validateUserLogin from "../../services/Firebase/User/firebaseUserValidation.js";
+import TasksDatabaseManagement from "../../services/Firebase/Tasks/firebaseTaskDatabaseManagement.js";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -35,7 +36,9 @@ const LoginPage = () => {
       });
       setIsLoading(false);
       if (validacion.existe) {
-        //navigate("/tasks/");
+        const prueba = new TasksDatabaseManagement();
+        prueba.traerTareas();
+        navigate("/tasks/");
       }
     } else {
       Swal.fire({
