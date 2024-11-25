@@ -1,12 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import LoginPage from "./pages/Login/login";
+import RegisterPage from "./pages/Register/register";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-const router = createBrowserRouter([{ path: "/", element: <LoginPage/> }
-  //{path: "/register", element: <RegisterPage/>},
+const router = createBrowserRouter([{ path: "/", element: <LoginPage/> },
+  {path: "/login", element: <LoginPage/>},
+  {path: "/register", element: <RegisterPage/>},
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

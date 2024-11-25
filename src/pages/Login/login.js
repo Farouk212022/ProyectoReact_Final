@@ -34,6 +34,7 @@ const LoginPage = () => {
         text: validacion.mensaje,
         icon: validacion.icon,
       });
+      navigate("/tasks");
       setIsLoading(false);
       if (validacion.existe) {
         console.log("Login exitoso");
