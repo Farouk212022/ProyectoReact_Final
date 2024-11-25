@@ -27,17 +27,15 @@ const LoginPage = () => {
     }
     if (email !== "" && password !== "") {
       var validacion = await validateUserLogin(email, password);
-      console.log(validacion);
       setIsLoading(true);
       Swal.fire({
         title: validacion.titulo,
         text: validacion.mensaje,
         icon: validacion.icon,
       });
-      navigate("/tasks");
       setIsLoading(false);
       if (validacion.existe) {
-        console.log("Login exitoso");
+        navigate("/tasks/");
       }
     } else {
       Swal.fire({

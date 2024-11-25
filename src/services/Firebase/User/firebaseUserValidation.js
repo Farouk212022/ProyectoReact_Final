@@ -1,38 +1,36 @@
 import { db } from "../firebaseConfig";
 import { collection, getDocs, query, where } from "firebase/firestore";
+import { auth } from "../firebaseConfig";import { signInWithEmailAndPassword } from "firebase/auth";
 
 async function validateUserLogin(email, password) {
-  console.log(email, password);
     try {
+      const loginValidation = await signInWithEmailAndPassword(auth, email, password);
+      if (!loginValidation.isEmpty){
       const databaseSearch = query(
         collection(db, "usuarios"), 
         where("email", "==", email),
-        where("password", "==", password)
       );
       const resultado = await getDocs(databaseSearch);
-      if (resultado.empty) {
-        return {
-          existe: false,
-          titulo: "Error",
-          mensaje:
-            "Error en las credenciales, por favor verifiquelas e intente nuevamente",
-          icon: "error",
-        };
-      } else {
         const username = resultado.docs[0].data().username;
         return {
           existe: true,
           titulo: "Ingreso Exitoso",
           mensaje: `Bienvenido al Tablero de Tareas ${username}`,
           icon: "success",
-        };
-      }
+        };} else {
+          return {
+            existe: false,
+            titulo: "Error",
+            mensaje: "Usuario no encontrado",
+            icon: "error",
+          };
+        }
     } catch (error) {
       return {
-        existe: true,
+        existe: false,
         titulo: "Error",
         mensaje:
-          "Ha ocurrido un error al iniciar sesión, por favor intente nuevamente",
+          "Ha ocurrido un error al iniciar sesión, por favor verifique las credenciales e intente nuevamente.",
         icon: "error",
       };
     }
