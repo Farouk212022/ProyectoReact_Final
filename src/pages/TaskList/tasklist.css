@@ -1,39 +1,32 @@
-/* Contenedor principal */
-.task-list-container {
-    width: 90%;
-    max-width: 800px;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
-    text-align: center;
-  }
-  
-  /* Título */
-  .task-list-container h1 {
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  /* Mensaje cuando no hay tareas */
-  .no-tasks {
-    font-size: 18px;
-    color: #666;
-  }
-  
-  /* Botón para añadir tareas */
-  .add-task-button {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .add-task-button:hover {
-    background-color: #0056b3;
-  }
-  
+:root {
+  background-color: #2a2a2a;
+  padding: 10px;
+}
+.title-list {
+  justify-content: center;
+  display: flex;
+  color: #fff;
+}
+
+.task-dashboard {
+  display: flex;
+  flex-direction: column;
+  background-color: #2a2a2a;
+}
+.task-list {
+  background-color: #2a2a2a;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.loading-text {
+  display: flex;
+  width: 100%;
+  align-items:center ;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}

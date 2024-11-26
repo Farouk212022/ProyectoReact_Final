@@ -1,0 +1,21 @@
+.add-button {
+  background-color: #229100b1;
+  height: 350px;
+  width: 300px;
+  margin: 20px;
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #6dbf4a, #239100);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-button:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.add-text{
+font-size: 20px;
+font-weight: bold;
+color: white;
+}
