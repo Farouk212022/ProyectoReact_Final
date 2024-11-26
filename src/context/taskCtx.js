@@ -29,4 +29,4 @@ export function TaskProvider({ children }) {
       </taskDispatchContext.Provider>
     </taskContext.Provider>
   );
-}
+};

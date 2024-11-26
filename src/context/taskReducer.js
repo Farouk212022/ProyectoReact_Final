@@ -16,6 +16,7 @@ export const initialState = {
 export const taskReducer = (state, action) => {
   switch (action.type) {
     case actions.SET_TASKS:
+      console.log("Actualizando tareas", action.payload);
       return { ...state, tasks: action.payload };
     case actions.SET_LOADING:
       return { ...state, loading: action.payload };

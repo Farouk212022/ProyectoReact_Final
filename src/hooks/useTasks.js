@@ -1,10 +1,11 @@
 import { useCallback, useEffect } from "react";
-import { useDispatchContext } from "../context/taskCtx";
+import { useDispatchContext, useTaskContext } from "../context/taskCtx";
 import { actions } from "../context/taskReducer";
 import TasksDatabaseManagement from "../services/Firebase/Tasks/firebaseTaskDatabaseManagement";
 
 const useTasks = () => {
   const dispatch = useDispatchContext();
+  const state = useTaskContext();
 
   const fetchTasks = useCallback(async () => {
     dispatch({ type: actions.SET_LOADING, payload: true });
@@ -31,5 +32,7 @@ const useTasks = () => {
     fetchTasks();
     addTask();
   }, [fetchTasks, addTask]);
+
+  return {...state, dispatch};
 }
 export default useTasks;

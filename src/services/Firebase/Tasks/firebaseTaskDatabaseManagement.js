@@ -16,6 +16,8 @@ class TasksDatabaseManagement {
       }));
       
       console.log("Tareas encontradas:", tareas);
+
+      return tareas;
      
     } catch (error) {
       console.log(error);

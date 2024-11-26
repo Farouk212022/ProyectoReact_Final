@@ -5,6 +5,7 @@ import useTasks from "../../hooks/useTasks";
 export default function TaskList({ userEmail }) {
   useTasks();
   const {tasks, loading } = useTasks();
+  console.log("Tareas en TaskList:", tasks);
 
   const handleEdit = (taskId) => {
     console.log("Editar tarea:", taskId);
@@ -24,9 +25,8 @@ export default function TaskList({ userEmail }) {
       ) : (
         tasks.map((task) => (
           <TaskCard
-            key={task.id}
-            title={task.title}
-            detail={task.detail}
+            title={task.titulo}
+            detail={task.descripcion}
             onEdit={() => handleEdit(task.id)}
             onDelete={() => handleDelete(task.id)}
           />
