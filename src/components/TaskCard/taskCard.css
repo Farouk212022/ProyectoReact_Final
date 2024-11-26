@@ -70,12 +70,16 @@
 
 .task-buttons {
   display: flex;
-  justify-content: space-around;
-  width: 75%;
+  justify-content: space-between; 
+  align-items: center; 
+  width: 100%; 
+  padding: 0; 
+  gap: 10px;
 }
 
 .edit-button,
-.delete-button {
+.delete-button,
+.task-complete {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -88,18 +92,25 @@
 }
 
 .edit-button {
-  background: linear-gradient(145deg, #6dbf4a, #239100);
+  background: linear-gradient(145deg, #4a90e2, #007bff);
 }
 
 .edit-button:hover {
   transform: scale(1.05);
 }
 
-
 .delete-button {
   background: linear-gradient(145deg, #f44336, #e53935);
 }
 
 .delete-button:hover {
+  transform: scale(1.05);
+}
+
+.task-complete {
+  background: linear-gradient(145deg, #6dbf4a, #239100);
+}
+
+.task-complete:hover {
   transform: scale(1.05);
 }

@@ -6,7 +6,8 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import TaskPage from "./pages/TaskList/tasklist";
-import AddTaskPage from "./pages/addTasks/addTasks"
+import AddTaskPage from "./pages/addTasks/addTasks";
+import EditTask from "./pages/editTasks/editTasks";
 import { TaskProvider } from "./context/taskCtx";
 
 const router = createBrowserRouter([
@@ -14,7 +15,8 @@ const router = createBrowserRouter([
   { path: "/login", element: <LoginPage /> },
   { path: "/register", element: <RegisterPage /> },
   { path: "/tasks", element: <TaskPage /> },
-  { path: "/addtask", element: <AddTaskPage/>}
+  { path: "/addtask", element: <AddTaskPage /> },
+  { path: "/edit/:id", element: <EditTask /> },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

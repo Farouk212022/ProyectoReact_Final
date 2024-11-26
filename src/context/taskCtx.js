@@ -2,7 +2,7 @@ import { createContext, useContext, useReducer } from "react";
 import { initialState, taskReducer } from "./taskReducer";
 
 const taskContext = createContext(null);
-const taskDispatchContext = createContext(null); 
+const taskDispatchContext = createContext(null);
 
 export function useTaskContext() {
   const context = useContext(taskContext);
@@ -20,8 +20,9 @@ export function useDispatchContext() {
   return context;
 }
 
-export function TaskProvider({ children }) {  
+export function TaskProvider({ children }) {
   const [state, dispatch] = useReducer(taskReducer, initialState);
+
   return (
     <taskContext.Provider value={state}>
       <taskDispatchContext.Provider value={dispatch}>
@@ -29,4 +30,4 @@ export function TaskProvider({ children }) {
       </taskDispatchContext.Provider>
     </taskContext.Provider>
   );
-};
+}
