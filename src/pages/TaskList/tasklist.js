@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TaskCard from "../../components/TaskCard/taskCard";
 import useTasks from "../../hooks/useTasks";
+import "./tasklist.css";
 
 export default function TaskList({ userEmail }) {
   useTasks();
@@ -16,12 +17,13 @@ export default function TaskList({ userEmail }) {
   };
 
   return (
-    <div className="task-list">
-      <h1>Listado de Tareas</h1>
+    <div className="task-dashboard">
+      <h1 className="title-list">Listado de Tareas</h1>
+      <div className="task-list">
       {loading ? (
-        <p>Cargando tareas...</p>
+        <p class name="loading-text">Cargando tareas...</p>
       ) : tasks.length === 0 ? (
-        <p>No hay tareas en este momento.</p>
+        <p class name="loading-text">No hay tareas en este momento.</p>
       ) : (
         tasks.map((task) => (
           <TaskCard
@@ -32,6 +34,7 @@ export default function TaskList({ userEmail }) {
           />
         ))
       )}
+      </div>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { MdOutlineTaskAlt  } from "react-icons/md";
 import registerUser from "../../services/Firebase/User/firebaseUserCreation";
 import "./register.css";
 
@@ -44,6 +45,7 @@ export default function Register() {
           title: "Error",
           text: "Hubo un problema al conectarse con el servidor",
           icon: "error",
+          confirmButtonColor: "#239100",
         });
       } finally {
         setIsLoading(false);
@@ -53,6 +55,7 @@ export default function Register() {
         title: "Error",
         text: "Por favor, completa todos los campos",
         icon: "error",
+        confirmButtonColor: "#239100",
       });
     }
   };
@@ -65,17 +68,9 @@ export default function Register() {
           <p className="loading-text">Cargando...</p>
         </div>
       )}
-      <header className="register-header">
-        <img src="nextPlayerLogo.png" className="register-logo" alt="Logo" />
-        <a
-          href="mailto:proyectofinalreactjs@gmail.com"
-          className="register-contact-link"
-        >
-          Contact
-        </a>
-      </header>
       <h1>Bienvenido/a!</h1>
       <div className="register-form" style={{ opacity: isLoading ? 0.5 : 1 }}>
+      <MdOutlineTaskAlt  className="login-logo" size={80} color="rgb(35,145,0)" />
         <input
           type="text"
           placeholder="Usuario"
@@ -107,13 +102,11 @@ export default function Register() {
         >
           Registrarse
         </button>
-        <a href="/login" className="register-login-link">
+        
+      </div>
+      <a href="/login" className="register-login-link">
           ¿Ya tienes cuenta? Inicia sesión aquí
         </a>
-      </div>
-      <footer className="register-footer">
-        <p>&copy; 2024 - Página increíble</p>
-      </footer>
     </div>
   );
 }
