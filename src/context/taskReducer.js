@@ -20,6 +20,8 @@ export const taskReducer = (state, action) => {
       return { ...state, tasks: action.payload };
     case actions.ADD_TASK:
       return { ...state, tasks: [...state.tasks, action.payload] };
+    case actions.DELETE_TASK:
+      return { ...state, tasks: state.tasks.filter(task => task.id !== action.payload) };
     case actions.SET_LOADING:
       return { ...state, loading: action.payload };
     case actions.SET_ERROR:

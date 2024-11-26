@@ -2,7 +2,7 @@ import { useCallback, useEffect } from "react";
 import { useDispatchContext, useTaskContext } from "../context/taskCtx";
 import { actions } from "../context/taskReducer";
 import TasksDatabaseManagement from "../services/Firebase/Tasks/firebaseTaskDatabaseManagement";
-import { type } from "@testing-library/user-event/dist/type";
+
 
 const useTasks = () => {
   const dispatch = useDispatchContext();
@@ -31,11 +31,26 @@ const useTasks = () => {
     }
   },[dispatch, fetchTasks]);
 
+  const deleteTask = useCallback(async (taskId) => {
+    dispatch({ type: actions.SET_LOADING, payload: true });
+    const taskManagement = new TasksDatabaseManagement();
+    try {
+      await taskManagement.deleteTarea(taskId);
+      dispatch({ type: actions.DELETE_TASK, payload: taskId });
+    } catch (error) {
+      dispatch({ type: actions.SET_ERROR, payload: error });
+    } finally {
+      dispatch({ type: actions.SET_LOADING, payload: false });
+    }
+  }, [dispatch]);
+
+  
+
   useEffect(() => {
     fetchTasks();
   }, [fetchTasks]);
 
-  return {...state, addTask, dispatch};
+  return {...state, addTask, deleteTask, dispatch};
 };
 
 export default useTasks;

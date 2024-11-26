@@ -1,5 +1,5 @@
 import { db } from "../firebaseConfig";
-import { collection, getDocs, query, where, addDoc } from "firebase/firestore";
+import { collection, getDocs, query, where, addDoc, deleteDoc, doc } from "firebase/firestore";
 
 class TasksDatabaseManagement { 
   async traerTareas() {
@@ -35,6 +35,11 @@ class TasksDatabaseManagement {
       console.log("Error al agregar la tarea:", error);
       throw error; 
     }
+  }
+
+  async deleteTarea(taskId) {
+    const taskRef = doc(db, "tareas", taskId);
+    await deleteDoc(taskRef);
   }
 }
 export default TasksDatabaseManagement;

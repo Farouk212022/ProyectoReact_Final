@@ -1,12 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import TaskCard from "../../components/TaskCard/taskCard";
 import useTasks from "../../hooks/useTasks";
 import "./tasklist.css"
 
 export default function TaskList({ userEmail }) {
   useTasks();
-  const {tasks, loading } = useTasks();
+  const {tasks, loading, deleteTask } = useTasks();
   const navigate = useNavigate();
   console.log("Tareas en TaskList:", tasks);
 
@@ -15,9 +16,26 @@ export default function TaskList({ userEmail }) {
   };
 
   const handleDelete = (taskId) => {
-    console.log("Eliminar tarea:", taskId);
+    Swal.fire({
+      title: "¿Estás seguro?",
+      text: "Esta acción eliminará la tarea de forma permanente.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteTask(taskId);
+        Swal.fire(
+          "Eliminada",
+          "La tarea ha sido eliminada con éxito.",
+          "success"
+        );
+      }
+    });
   };
-
 
   const handleAddTask = () => {
     navigate("/addtask");

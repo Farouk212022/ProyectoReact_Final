@@ -71,12 +71,12 @@ const AddTask = () => {
           </div>
           <div className="form-field">
             <label>Detalle</label>
-            <textarea
+            <input
               value={detail}
               onChange={(e) => setDetail(e.target.value)}
               required
               disabled={loading}
-              className="addtask-input"
+              className="addtask-detail"
             />
           </div>
           <button type="submit" disabled={loading} className="addtask-button">
@@ -88,7 +88,7 @@ const AddTask = () => {
           onClick={handleBack}
           className="back-button"
           disabled={loading}
-        >volver</button>
+        >Volver</button>
       </div>
     </div>
   );
