@@ -1,43 +1,76 @@
-.task-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 2px solid purple;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .task-title {
-    font-weight: bold;
-    flex: 1;
-  }
-  
-  .task-detail {
-    flex: 2;
-    margin-left: 10px;
-  }
-  
-  .task-buttons {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .task-edit-button {
-    background: linear-gradient(to right, green, lightgreen);
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .task-delete-button {
-    background: linear-gradient(to right, red, lightcoral);
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
+/* Contenedor principal */
+.task-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+}
+
+/* Información de la tarea */
+.task-info {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  align-items: center;
+}
+
+.task-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.task-detail {
+  font-size: 14px;
+  color: #666;
+}
+
+.task-status {
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.task-status.completed {
+  background-color: #4caf50; /* Verde */
+}
+
+.task-status.pending {
+  background-color: #f44336; /* Rojo */
+}
+
+/* Botones */
+.task-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-button {
+  padding: 5px 10px;
+  background: linear-gradient(to right, #4caf50, #81c784);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.delete-button {
+  padding: 5px 10px;
+  background: linear-gradient(to right, #f44336, #e57373);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.edit-button:hover {
+  background: #388e3c;
+}
+
+.delete-button:hover {
+  background: #d32f2f;
+}

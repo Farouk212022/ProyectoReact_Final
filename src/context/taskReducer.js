@@ -18,6 +18,8 @@ export const taskReducer = (state, action) => {
     case actions.SET_TASKS:
       console.log("Actualizando tareas", action.payload);
       return { ...state, tasks: action.payload };
+    case actions.ADD_TASK:
+      return { ...state, tasks: [...state.tasks, action.payload] };
     case actions.SET_LOADING:
       return { ...state, loading: action.payload };
     case actions.SET_ERROR:

@@ -2,6 +2,7 @@ import { useCallback, useEffect } from "react";
 import { useDispatchContext, useTaskContext } from "../context/taskCtx";
 import { actions } from "../context/taskReducer";
 import TasksDatabaseManagement from "../services/Firebase/Tasks/firebaseTaskDatabaseManagement";
+import { type } from "@testing-library/user-event/dist/type";
 
 const useTasks = () => {
   const dispatch = useDispatchContext();
@@ -22,17 +23,19 @@ const useTasks = () => {
     const taskManagement = new TasksDatabaseManagement();
     try{
       await taskManagement.addTarea(task);
+      dispatch({ type: actions.ADD_TASK, payload: task});
+      fetchTasks();
       dispatch({ type: actions.SET_LOADING, payload: false });
     }catch(error){
       dispatch({ type: actions.SET_ERROR, payload: error });
     }
-  },[dispatch]);
+  },[dispatch, fetchTasks]);
 
   useEffect(() => {
     fetchTasks();
-    addTask();
-  }, [fetchTasks, addTask]);
+  }, [fetchTasks]);
 
-  return {...state, dispatch};
-}
+  return {...state, addTask, dispatch};
+};
+
 export default useTasks;

@@ -1,5 +1,5 @@
 import { db } from "../firebaseConfig";
-import { collection, getDoc, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, query, where, addDoc } from "firebase/firestore";
 
 class TasksDatabaseManagement { 
   async traerTareas() {
@@ -18,9 +18,22 @@ class TasksDatabaseManagement {
       console.log("Tareas encontradas:", tareas);
 
       return tareas;
-     
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  async addTarea(task) {
+    try {
+      
+      const docRef = await addDoc(collection(db, "tareas"), {
+        ...task, 
+        usuario: localStorage.getItem("userId"), 
+      });
+      console.log("Tarea añadida con ID: ", docRef.id);
+    } catch (error) {
+      console.log("Error al agregar la tarea:", error);
+      throw error; 
     }
   }
 }
