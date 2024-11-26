@@ -28,7 +28,7 @@ export default function TaskList({ userEmail }) {
       <h1>Listado de Tareas</h1>
       <button onClick={handleAddTask} className="add-task-button">Añadir Tarea</button>
       {loading ? (
-        <p>Cargando tareas...</p>
+        <p class name="loading-text">Cargando tareas...</p>
       ) : tasks.length === 0 ? (
         <p className="no-tasks">No hay tareas en este momento.</p>
       ) : (
@@ -42,6 +42,7 @@ export default function TaskList({ userEmail }) {
           />
         ))
       )}
-    </div>
+      </div>
+    
   );
 }

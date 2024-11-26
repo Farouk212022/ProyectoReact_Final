@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { FaCircleUser } from "react-icons/fa6";
+import { MdOutlineTaskAlt  } from "react-icons/md";
 import "./login.css";
 import validateUserLogin from "../../services/Firebase/User/firebaseUserValidation.js";
 import TasksDatabaseManagement from "../../services/Firebase/Tasks/firebaseTaskDatabaseManagement.js";
@@ -23,6 +23,7 @@ const LoginPage = () => {
         title: "Error",
         text: "Por favor, ingresa un email válido",
         icon: "error",
+        confirmButtonColor: "#239100",
       });
       return;
     }
@@ -33,6 +34,7 @@ const LoginPage = () => {
         title: validacion.titulo,
         text: validacion.mensaje,
         icon: validacion.icon,
+        confirmButtonColor: "#239100",
       });
       setIsLoading(false);
       if (validacion.existe) {
@@ -57,17 +59,9 @@ const LoginPage = () => {
           <p className="loading-text">Cargando...</p>
         </div>
       )}
-      <header className="login-header">
-        <img src="nextPlayerLogo.png" className="login-logo" alt="Logo" />
-        <a
-          href="mailto:proyectofinalreactjs@gmail.com"
-          className="login-contact-link"
-        >
-          Contact
-        </a>
-      </header>
+      <h1>Inicio de Sesión </h1>
       <div className="login-content" style={{ opacity: isLoading ? 0.5 : 1 }}>
-        <FaCircleUser size={60} color="rgb(28, 90, 189)" />
+        <MdOutlineTaskAlt  className="login-logo" size={80} color="rgb(35,145,0)" />
         <input
           type="text"
           placeholder="Ingrese email"
@@ -95,9 +89,6 @@ const LoginPage = () => {
       <a href="/register" className="login-register-link">
         ¿No tienes cuenta? Regístrate aquí
       </a>
-      <footer className="login-footer">
-        <p>&copy; 2024 - Página increíble</p>
-      </footer>
     </div>
   );
 };
