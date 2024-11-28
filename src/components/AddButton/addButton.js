@@ -1,5 +1,6 @@
 import { CiBookmarkPlus } from "react-icons/ci";
 import "./addButton.css";
+
 export default function AddButton({ onClick }) {
   return (
     <button className="add-button" onClick={onClick}>

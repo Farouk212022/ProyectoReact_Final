@@ -1,22 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import LoginPage from "./pages/Login/login";
-import RegisterPage from "./pages/Register/register";
-import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import TaskPage from "./pages/TaskList/tasklist";
-import AddTaskPage from "./pages/addTasks/addTasks";
-import EditTask from "./pages/editTasks/editTasks";
 import { TaskProvider } from "./context/taskCtx";
+import LoginContainer from "./pages/login/loginContainer";
+import RegisterContainer from "./pages/register/registerContainer";
+import TasksContainer from "./pages/TaskList/taskListContainer";
+import AddTaskContainer from "./pages/addTask/addTaskContainer";
+import EditTaskContainer from "./pages/editTask/editTaskContainer";
+import "./index.css";
 
 const router = createBrowserRouter([
-  { path: "/", element: <LoginPage /> },
-  { path: "/login", element: <LoginPage /> },
-  { path: "/register", element: <RegisterPage /> },
-  { path: "/tasks", element: <TaskPage /> },
-  { path: "/addtask", element: <AddTaskPage /> },
-  { path: "/edit/:id", element: <EditTask /> },
+  { path: "/", element: <LoginContainer /> },
+  { path: "/login", element: <LoginContainer /> },
+  { path: "/register", element: <RegisterContainer /> },
+  { path: "/tasks", element: <TasksContainer/> },
+  { path: "/addtask", element: <AddTaskContainer /> },
+  { path: "/edit/:id", element: <EditTaskContainer /> },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

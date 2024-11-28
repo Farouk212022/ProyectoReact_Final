@@ -12,7 +12,7 @@ h1 {
   justify-content: center;
   min-height: 100vh;
   padding: 0 20px;
-  position: relative; /* Necesario para el overlay */
+  position: relative;
 }
 
 .login-content {
@@ -64,7 +64,6 @@ h1 {
   background-color: #229100d2;
 }
 
-/* Botón deshabilitado */
 .login-button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
@@ -82,7 +81,6 @@ h1 {
   color: #229100c6;
 }
 
-/* Indicador de carga */
 .loading-overlay {
   position: absolute;
   top: 0;

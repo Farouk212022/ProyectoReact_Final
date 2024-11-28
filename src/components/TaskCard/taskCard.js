@@ -1,10 +1,8 @@
 import React from "react";
-import "./taskCard.css";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
 import { FaCheck } from "react-icons/fa";
-import { useDispatchContext } from "../../context/taskCtx"; 
-import TasksDatabaseManagement from "../../services/Firebase/Tasks/firebaseTaskDatabaseManagement";
+import "./taskCard.css";
 
 export default function TaskCard({
   title,
@@ -12,18 +10,9 @@ export default function TaskCard({
   status,
   onEdit,
   onDelete,
-  id, 
+  onStatusChange,
+  id
 }) {
-  const dispatch = useDispatchContext(); 
-
-  const handleStatusChange = () => {
-    dispatch({ type: "TOGGLE_TASK_STATUS", payload: id });
-
-    const taskManagement = new TasksDatabaseManagement();
-
-    taskManagement.updateTaskStatus(id, !status);
-  };
-
   return (
     <div className="task-item">
       <span className="task-title">{title}</span>
@@ -39,7 +28,7 @@ export default function TaskCard({
           <MdDeleteOutline size={30} color="rgb(255,255,255)" />
         </button>
         {!status && (
-          <button className="task-complete" onClick={handleStatusChange}>
+          <button className="task-complete" onClick={onStatusChange}>
             <FaCheck size={30} color="rgb(255,255,255)" />
           </button>
         )}

@@ -65,17 +65,17 @@ class TasksDatabaseManagement {
 
   async getTask(id) {
     try {
-      const taskRef = doc(db, "tareas", id); // Buscar la tarea por su ID
-      const taskDoc = await getDoc(taskRef); // Obtener el documento de la tarea
+      const taskRef = doc(db, "tareas", id);
+      const taskDoc = await getDoc(taskRef);
 
       if (taskDoc.exists()) {
-        return { id: taskDoc.id, ...taskDoc.data() }; // Devuelve los datos de la tarea
+        return { id: taskDoc.id, ...taskDoc.data() };
       } else {
-        throw new Error("Tarea no encontrada"); // Si no existe la tarea
+        throw new Error("Tarea no encontrada");
       }
     } catch (error) {
       console.error("Error al obtener la tarea:", error);
-      throw error; // Lanza el error para manejarlo en el componente
+      throw error;
     }
   }
 

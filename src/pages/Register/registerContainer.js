@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import { MdOutlineTaskAlt  } from "react-icons/md";
 import registerUser from "../../services/Firebase/User/firebaseUserCreation";
+import Swal from "sweetalert2";
+import RegisterPresentation from "./registerPresentation";
 import "./register.css";
 
 export default function Register() {
@@ -59,54 +59,6 @@ export default function Register() {
       });
     }
   };
-
-  return (
-    <div className="register-body">
-      {isLoading && (
-        <div className="loading-overlay">
-          <div className="spinner"></div>
-          <p className="loading-text">Cargando...</p>
-        </div>
-      )}
-      <h1>Bienvenido/a!</h1>
-      <div className="register-form" style={{ opacity: isLoading ? 0.5 : 1 }}>
-      <MdOutlineTaskAlt  className="login-logo" size={80} color="rgb(35,145,0)" />
-        <input
-          type="text"
-          placeholder="Usuario"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          className="register-input"
-          disabled={isLoading}
-        />
-        <input
-          type="email"
-          placeholder="Correo Electrónico"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="register-input"
-          disabled={isLoading}
-        />
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="register-input"
-          disabled={isLoading}
-        />
-        <button
-          onClick={handleRegister}
-          className="register-button"
-          disabled={isLoading}
-        >
-          Registrarse
-        </button>
-        
-      </div>
-      <a href="/login" className="register-login-link">
-          ¿Ya tienes cuenta? Inicia sesión aquí
-        </a>
-    </div>
-  );
+  const dataForPresentation = {username,email,password,isLoading,handleRegister,setUsername,setEmail,setPassword} ;
+  return <RegisterPresentation data={dataForPresentation} />;
 }

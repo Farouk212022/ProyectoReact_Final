@@ -3,7 +3,6 @@ import { useDispatchContext, useTaskContext } from "../context/taskCtx";
 import { actions } from "../context/taskReducer";
 import TasksDatabaseManagement from "../services/Firebase/Tasks/firebaseTaskDatabaseManagement";
 
-
 const useTasks = () => {
   const dispatch = useDispatchContext();
   const state = useTaskContext();
@@ -18,39 +17,43 @@ const useTasks = () => {
     dispatch({ type: actions.SET_LOADING, payload: false });
   }, [dispatch]);
 
-  const addTask = useCallback(async (task) => {
-    dispatch({ type: actions.SET_LOADING, payload: true });
-    const taskManagement = new TasksDatabaseManagement();
-    try{
-      await taskManagement.addTarea(task);
-      dispatch({ type: actions.ADD_TASK, payload: task});
-      fetchTasks();
-      dispatch({ type: actions.SET_LOADING, payload: false });
-    }catch(error){
-      dispatch({ type: actions.SET_ERROR, payload: error });
-    }
-  },[dispatch, fetchTasks]);
+  const addTask = useCallback(
+    async (task) => {
+      dispatch({ type: actions.SET_LOADING, payload: true });
+      const taskManagement = new TasksDatabaseManagement();
+      try {
+        await taskManagement.addTarea(task);
+        dispatch({ type: actions.ADD_TASK, payload: task });
+        fetchTasks();
+        dispatch({ type: actions.SET_LOADING, payload: false });
+      } catch (error) {
+        dispatch({ type: actions.SET_ERROR, payload: error });
+      }
+    },
+    [dispatch, fetchTasks]
+  );
 
-  const deleteTask = useCallback(async (taskId) => {
-    dispatch({ type: actions.SET_LOADING, payload: true });
-    const taskManagement = new TasksDatabaseManagement();
-    try {
-      await taskManagement.deleteTarea(taskId);
-      dispatch({ type: actions.DELETE_TASK, payload: taskId });
-    } catch (error) {
-      dispatch({ type: actions.SET_ERROR, payload: error });
-    } finally {
-      dispatch({ type: actions.SET_LOADING, payload: false });
-    }
-  }, [dispatch]);
-
-  
+  const deleteTask = useCallback(
+    async (taskId) => {
+      dispatch({ type: actions.SET_LOADING, payload: true });
+      const taskManagement = new TasksDatabaseManagement();
+      try {
+        await taskManagement.deleteTarea(taskId);
+        dispatch({ type: actions.DELETE_TASK, payload: taskId });
+      } catch (error) {
+        dispatch({ type: actions.SET_ERROR, payload: error });
+      } finally {
+        dispatch({ type: actions.SET_LOADING, payload: false });
+      }
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     fetchTasks();
   }, [fetchTasks]);
 
-  return {...state, addTask, deleteTask, dispatch};
+  return { ...state, addTask, deleteTask, dispatch };
 };
 
 export default useTasks;
